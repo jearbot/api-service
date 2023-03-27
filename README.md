@@ -1,5 +1,5 @@
-Locally creating drivers:
-
+Local testing without OpenRoute callbacks:
+* Create Drivers
 ```ruby
 require 'factory_bot'
 d = FactoryBot.create(:driver)
@@ -7,16 +7,40 @@ d = FactoryBot.create(:driver)
   FactoryBot.create(:ride, driver: d)
 end
 ```
-
+```
+curl -X GET
+-H 'X-ACCESS-TOKEN: YOUR_API_TOKEN'
+-d 'driver_id="DRIVER_EXTERNAL_ID_OR_ID"'
+'http://localhost:3000/api/v1/rides?page=1'
+```
+---
+Local testing with OpenRoute callbacks:
+* Add `.env.rb` file in `config/env.rb`
+* Add `ENV['API_TOKEN'] = 'a_random_api_token'` to `.env.rb`
+* Add `ENV['OPENROUTE_TOKEN'] = 'your_openroute_api_token'` to `.env.rb`
+* Create Drivers
+```ruby
+require 'factory_bot'
+d = FactoryBot.create(:driver_with_callbacks)
+15.times do 
+  FactoryBot.create(:ride_with_callbacks, driver: d)
+end
+```
+```
+curl -X GET
+-H 'X-ACCESS-TOKEN: YOUR_API_TOKEN'
+-d 'driver_id="DRIVER_EXTERNAL_ID_OR_ID"'
+'http://localhost:3000/api/v1/rides?page=1'
+```
+---
 Feel free to test this out on Heroku as well using this CURL command:
-
 ```
 curl -X GET
 -H 'X-ACCESS-TOKEN: cc52f47e-e6d1-4bca-a928-b24cfdfdcc4f'
 -d 'driver_id="D-27LYR1HRLR"'
 'https://hsd-homework.herokuapp.com/api/v1/rides/?page=1'
 ```
-
+---
 ## Drivers API
 
 ### Show Driver
