@@ -1,4 +1,8 @@
-Local testing without OpenRoute callbacks:
+Local Testing
+* Add `.env.rb` file in `config/env.rb`
+* Add `ENV['API_TOKEN'] = 'a_random_api_token'` to `.env.rb`
+
+Testing without OpenRoute callbacks:
 * Create Drivers
 ```ruby
 require 'factory_bot'
@@ -15,8 +19,6 @@ curl -X GET
 ```
 ---
 Local testing with OpenRoute callbacks:
-* Add `.env.rb` file in `config/env.rb`
-* Add `ENV['API_TOKEN'] = 'a_random_api_token'` to `.env.rb`
 * Add `ENV['OPENROUTE_TOKEN'] = 'your_openroute_api_token'` to `.env.rb`
 * Create Drivers
 ```ruby
