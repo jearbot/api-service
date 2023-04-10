@@ -12,10 +12,10 @@ d = FactoryBot.create(:driver)
 end
 ```
 ```
-curl -X GET
--H 'X-ACCESS-TOKEN: YOUR_API_TOKEN'
--d 'driver_id="DRIVER_EXTERNAL_ID_OR_ID"'
-'http://localhost:3000/api/v1/rides?page=1'
+curl -X GET \
+-H 'X-ACCESS-TOKEN: YOUR_API_TOKEN' \
+-d 'driver_id="DRIVER_EXTERNAL_ID_OR_ID"' \
+'http://localhost:3000/api/v1/drivers?page=1'
 ```
 ---
 Local testing with OpenRoute callbacks:
@@ -29,18 +29,18 @@ d = FactoryBot.create(:driver_with_callbacks)
 end
 ```
 ```
-curl -X GET
--H 'X-ACCESS-TOKEN: YOUR_API_TOKEN'
--d 'driver_id="DRIVER_EXTERNAL_ID_OR_ID"'
-'http://localhost:3000/api/v1/rides?page=1'
+curl -X GET \
+-H 'X-ACCESS-TOKEN: YOUR_API_TOKEN' \
+-d 'driver_id="DRIVER_EXTERNAL_ID_OR_ID"' \
+'http://localhost:3000/api/v1/drivers?page=1'
 ```
 ---
 Feel free to test this out on Heroku as well using this CURL command:
 ```
-curl -X GET
--H 'X-ACCESS-TOKEN: cc52f47e-e6d1-4bca-a928-b24cfdfdcc4f'
--d 'driver_id="D-27LYR1HRLR"'
-'https://hsd-homework.herokuapp.com/api/v1/rides/?page=1'
+curl -X GET \
+-H 'X-ACCESS-TOKEN: cc52f47e-e6d1-4bca-a928-b24cfdfdcc4f' \
+-d 'driver_id="D-27LYR1HRLR"' \
+'https://hsd-homework.herokuapp.com/api/v1/drivers/?page=1' 
 ```
 ---
 ## Drivers API
@@ -50,7 +50,7 @@ curl -X GET
 Returns a JSON object containing a list of rides associated with a driver.
 
 * URL  
-`http://localhost:3000/api/v1/rides/:driver_id`
+`http://localhost:3000/api/v1/drivers/:driver_id`
 
 * Method  
 `GET`
@@ -133,7 +133,7 @@ Returns a JSON object containing a list of rides associated with a driver.
 require 'uri'
 require 'net/http'
 
-url = URI("http://localhost:3000/api/v1/rides/D-1234567890?page=1")
+url = URI("http://localhost:3000/api/v1/drivers/D-1234567890?page=1")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -148,8 +148,8 @@ puts response.read_body
 * Sample call using CURL
 
 ```
-curl -X GET
--H 'X-ACCESS-TOKEN: 11111111-2222-3333-4444-555555555555'
--d 'driver_id="D-1234567890"'
-'http://localhost:3000/api/v1/rides?page=1'
+curl -X GET \
+-H 'X-ACCESS-TOKEN: 11111111-2222-3333-4444-555555555555' \
+-d 'driver_id="D-1234567890"' \
+'http://localhost:3000/api/v1/drivers?page=1'
 ```

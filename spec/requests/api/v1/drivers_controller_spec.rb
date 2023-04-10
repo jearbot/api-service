@@ -69,7 +69,6 @@ describe Api::V1::DriversController, type: :controller do
 			let(:params) { { driver_id: driver.external_id.to_json } }
 
 			it 'returns a success response' do
-				# TODO: FIX TO NOT CALL GEOCODER
 				subject
 				expect(response).to be_successful
 			end

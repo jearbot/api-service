@@ -37,7 +37,7 @@ class Driver < ApplicationRecord
   serialize :home_coordinates, Array # [Longitude, Latitude]
 
   # Associations
-  has_many :rides, class_name: 'Ride'
+  has_many :rides
 
   private
 

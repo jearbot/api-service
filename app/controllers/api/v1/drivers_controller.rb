@@ -5,7 +5,7 @@ module Api
       before_action :set_driver, only: [:show]
 
       def show
-        @rides = Ride.ordered.where(driver_id: @driver.id).paginate(page: params[:page])
+        @rides = @driver.rides.ordered.where(driver_id: @driver.id).paginate(page: params[:page])
 
         serialized_rides = ActiveModelSerializers::SerializableResource.new(
           @rides,
